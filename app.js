@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+logger.token('body', function (req) { return req.method === 'POST' ? JSON.stringify(req.body) : null });
 
 const app = express();
 
@@ -32,7 +33,16 @@ const generateId = () => {
     return Math.floor(Math.random() * Math.floor(1000000));
 };
 
-app.use(logger('tiny'));
+app.use(logger(function (tokens, req, res) {
+    return [
+        tokens.method(req, res),
+        tokens.url(req, res),
+        tokens.status(req, res),
+        '-',
+        tokens['response-time'](req, res), 'ms',
+        tokens['body'](req, res)
+    ].join(' ')
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
