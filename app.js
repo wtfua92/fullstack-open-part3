@@ -35,16 +35,7 @@ const generateId = () => {
 };
 
 app.use(require('cors'));
-app.use(logger(function (tokens, req, res) {
-    return [
-        tokens.method(req, res),
-        tokens.url(req, res),
-        tokens.status(req, res),
-        '-',
-        tokens['response-time'](req, res), 'ms',
-        tokens['body'](req, res)
-    ].join(' ')
-}));
+app.use(logger('debug'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
