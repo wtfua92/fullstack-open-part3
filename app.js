@@ -50,6 +50,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/', (req, res) => {
+    const response = `
+        <p>Phonebook has info for ${persons.length} people</p>
+        <p>${new Date()}</p>
+    `;
+    res.send(response);
+});
+
 app.get('/api/persons', (req, res) => {
     res.json(persons);
 });
@@ -86,16 +94,6 @@ app.delete('/api/persons/:id', (req, res) => {
     }
     persons = persons.filter(p => p.id !== +req.params.id);
     res.send('<p>Contact successfully deleted</p>');
-});
-
-
-
-app.get('/api/info', (req, res) => {
-    const response = `
-        <p>Phonebook has info for ${contacts.length} people</p>
-        <p>${new Date()}</p>
-    `;
-    res.send(response);
 });
 
 module.exports = app;
