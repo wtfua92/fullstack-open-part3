@@ -32,7 +32,7 @@ const generateId = () => {
     return Math.floor(Math.random() * Math.floor(1000000));
 };
 
-app.use(logger('dev'));
+app.use(logger('tiny'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
