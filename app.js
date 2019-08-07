@@ -84,7 +84,7 @@ app.post('/api/persons', (req, res) => {
         id: generateId()
     };
     persons = [...persons, newPerson];
-    res.send(`${newPerson.name} was saved to phonebook`);
+    res.json(newPerson);
 });
 
 app.delete('/api/persons/:id', (req, res) => {
