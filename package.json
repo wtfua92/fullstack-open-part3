@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "PORT=3002 node ./bin/www",
+    "start": "node ./bin/www",
     "watch": "PORT=3002 nodemon ./bin/www",
     "build:ui": "rm -rf build && cd ../fullstack-open/part2/phonebook && npm run build --prod && cp -r build ../../../fullstack-open-part3/",
     "deploy": "git push heroku master",
