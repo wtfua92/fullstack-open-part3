@@ -60,7 +60,7 @@ app.get('/api/persons/:id', (req, res, next) => {
         .catch((err) => next(err));
 });
 
-app.post('/api/persons', (req, res) => {
+app.post('/api/persons', (req, res, next) => {
     const {name, number} = req.body;
     const newPerson = new Person({
         name,
@@ -71,9 +71,7 @@ app.post('/api/persons', (req, res) => {
         .then((result) => {
             res.json(result.toJSON());
         })
-        .catch((e) => {
-            res.status(400).json({message: 'something went wrong', error: e.message});
-        });
+        .catch((e) => next(e));
 });
 
 app.put('/api/persons/:id', (req, res, next) => {
