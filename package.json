@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "watch": "nodemon ./bin/www",
+    "lint": "eslint .",
     "build:ui": "rm -rf build && cd ../fullstack-open/part2/phonebook && npm run build --prod && cp -r build ../../../fullstack-open-part3/",
     "deploy": "git push heroku master",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
@@ -21,6 +22,7 @@
     "morgan": "~1.9.1"
   },
   "devDependencies": {
+    "eslint": "^6.1.0",
     "nodemon": "^1.19.1"
   }
 }
