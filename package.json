@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "watch": "PORT=3002 nodemon ./bin/www",
+    "watch": "nodemon ./bin/www",
     "build:ui": "rm -rf build && cd ../fullstack-open/part2/phonebook && npm run build --prod && cp -r build ../../../fullstack-open-part3/",
     "deploy": "git push heroku master",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
@@ -14,6 +14,7 @@
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
+    "dotenv": "^8.0.0",
     "express": "~4.16.1",
     "mongoose": "^5.6.8",
     "morgan": "~1.9.1"
